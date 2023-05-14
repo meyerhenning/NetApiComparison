@@ -83,10 +83,11 @@ public class StudentsController
     /// Gets all student entities.
     /// </summary>
     [HttpGet]
-    public ActionResult GetAll()
+    public async Task<ActionResult> GetAll()
     {
         var students = 
-            _context.Students.AsNoTracking();
+            await _context.Students
+                .ToListAsync();
 
         return Ok(students);
     }
