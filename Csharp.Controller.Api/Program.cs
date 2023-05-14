@@ -1,5 +1,11 @@
+using Csharp.Controller.Api;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ApiContext>(
+    o =>
+        o.UseInMemoryDatabase("ApiDb"));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
