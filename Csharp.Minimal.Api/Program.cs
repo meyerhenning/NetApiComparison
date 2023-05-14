@@ -64,7 +64,7 @@ app.MapPut("/Students/{id:guid}",
         student.LastName = updatedStudent.LastName;
 
         await context.SaveChangesAsync();
-        return Results.NoContent();
+        return Results.Ok();
     });
 
 // Deletes a student
@@ -82,7 +82,7 @@ app.MapDelete("/Students/{id:guid}",
         context.Students.Remove(student);
         await context.SaveChangesAsync();
 
-        return Results.Ok(student);
+        return Results.Ok();
     });
 
 app.Run();

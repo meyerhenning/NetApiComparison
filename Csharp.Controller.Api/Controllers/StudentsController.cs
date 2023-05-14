@@ -60,7 +60,7 @@ public class StudentsController
         _context.Students.Remove(student);
         await _context.SaveChangesAsync();
 
-        return Ok(student);
+        return Ok();
     }
     
     /// <summary>
@@ -115,6 +115,6 @@ public class StudentsController
         student.LastName = updatedStudent.LastName;
 
         await _context.SaveChangesAsync();
-        return NoContent();
+        return Ok();
     }
 }
