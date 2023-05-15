@@ -1,3 +1,4 @@
+using Csharp.Minimal.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Csharp.Minimal.Api;

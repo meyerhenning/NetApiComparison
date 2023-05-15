@@ -1,4 +1,4 @@
-namespace Csharp.Minimal.Api;
+namespace Csharp.Minimal.Api.Models;
 
 /// <summary>
 /// Defines a student entity.

@@ -1,4 +1,5 @@
 using Csharp.Minimal.Api;
+using Csharp.Minimal.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
