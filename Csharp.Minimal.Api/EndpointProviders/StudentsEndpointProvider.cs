@@ -16,23 +16,6 @@ public static class StudentsEndpointProvider
     /// <param name="app">The web application.</param>
     public static void RegisterEndpoints(WebApplication app)
     {
-        // Gets all students
-        app.MapGet(StudentsRoutes.GetAll,
-            async (ApiContext context) 
-                => await context.Students.ToListAsync());
-
-        // Gets a single student by id
-        app.MapGet(StudentsRoutes.Get,
-            async (ApiContext context, [FromRoute] Guid id) =>
-            {
-                var student =
-                    await context.Students.FindAsync(id);
-
-                return student is null
-                    ? Results.NotFound()
-                    : Results.Ok(student);
-            });
-
         // Adds a student
         app.MapPost(StudentsRoutes.Add,
             async (ApiContext context, [FromBody] Student newStudent) =>
@@ -43,25 +26,6 @@ public static class StudentsEndpointProvider
                 return Results.Created(
                     $"/Students/{newStudent.Id}",
                     newStudent);
-            });
-
-        // Updates a student
-        app.MapPut(StudentsRoutes.Update,
-            async (ApiContext context, [FromRoute] Guid id, [FromBody] Student updatedStudent) =>
-            {
-                var student =
-                    await context.Students.FindAsync(id);
-
-                if (student is null)
-                {
-                    return Results.NotFound();
-                }
-
-                student.FirstName = updatedStudent.FirstName;
-                student.LastName = updatedStudent.LastName;
-
-                await context.SaveChangesAsync();
-                return Results.Ok();
             });
 
         // Deletes a student
@@ -79,6 +43,42 @@ public static class StudentsEndpointProvider
                 context.Students.Remove(student);
                 await context.SaveChangesAsync();
 
+                return Results.Ok();
+            });
+        
+        // Gets a single student by id
+        app.MapGet(StudentsRoutes.Get,
+            async (ApiContext context, [FromRoute] Guid id) =>
+            {
+                var student =
+                    await context.Students.FindAsync(id);
+
+                return student is null
+                    ? Results.NotFound()
+                    : Results.Ok(student);
+            });
+
+        // Gets all students
+        app.MapGet(StudentsRoutes.GetAll,
+            async (ApiContext context) 
+                => await context.Students.ToListAsync());
+
+        // Updates a student
+        app.MapPut(StudentsRoutes.Update,
+            async (ApiContext context, [FromRoute] Guid id, [FromBody] Student updatedStudent) =>
+            {
+                var student =
+                    await context.Students.FindAsync(id);
+
+                if (student is null)
+                {
+                    return Results.NotFound();
+                }
+
+                student.FirstName = updatedStudent.FirstName;
+                student.LastName = updatedStudent.LastName;
+
+                await context.SaveChangesAsync();
                 return Results.Ok();
             });
     }
