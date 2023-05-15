@@ -1,4 +1,5 @@
 using Csharp.Minimal.Api.Models;
+using Csharp.Minimal.Api.Routes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,12 +17,12 @@ public static class StudentsEndpointProvider
     public static void RegisterEndpoints(WebApplication app)
     {
         // Gets all students
-        app.MapGet("/Students",
+        app.MapGet(StudentsRoutes.GetAll,
             async (ApiContext context) 
                 => await context.Students.ToListAsync());
 
         // Gets a single student by id
-        app.MapGet("/Students/{id:guid}",
+        app.MapGet(StudentsRoutes.Get,
             async (ApiContext context, [FromRoute] Guid id) =>
             {
                 var student =
@@ -33,7 +34,7 @@ public static class StudentsEndpointProvider
             });
 
         // Adds a student
-        app.MapPost("/Students",
+        app.MapPost(StudentsRoutes.Add,
             async (ApiContext context, [FromBody] Student newStudent) =>
             {
                 context.Students.Add(newStudent);
@@ -45,7 +46,7 @@ public static class StudentsEndpointProvider
             });
 
         // Updates a student
-        app.MapPut("/Students/{id:guid}",
+        app.MapPut(StudentsRoutes.Update,
             async (ApiContext context, [FromRoute] Guid id, [FromBody] Student updatedStudent) =>
             {
                 var student =
@@ -64,7 +65,7 @@ public static class StudentsEndpointProvider
             });
 
         // Deletes a student
-        app.MapDelete("/Students/{id:guid}",
+        app.MapDelete(StudentsRoutes.Delete,
             async (ApiContext context, [FromRoute] Guid id) =>
             {
                 var student =
