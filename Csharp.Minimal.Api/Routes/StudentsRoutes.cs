@@ -6,7 +6,7 @@ namespace Csharp.Minimal.Api.Routes;
 internal static class StudentsRoutes
 {
     /// <summary>
-    /// The route to the endpoints with the action:
+    /// The route to the endpoint with the action:
     /// add student
     /// </summary>
     public const string Add = Base;
