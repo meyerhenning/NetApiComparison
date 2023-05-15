@@ -7,7 +7,7 @@
     <ItemGroup>
         <Compile Include="Models\Student.fs" />
         <Compile Include="ApiContext.fs" />
-        <Folder Include="Controllers\" />
+        <Compile Include="Controllers\StudentsController.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
