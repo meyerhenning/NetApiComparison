@@ -19,9 +19,15 @@ module Program =
                     |> ignore)
 
         builder.Services.AddControllers()
+        builder.Services.AddSwaggerGen()
 
         let app = builder.Build()
 
+        if app.Environment.IsDevelopment() then
+            app.UseSwagger()
+            app.UseSwaggerUI()
+            |> ignore
+        
         app.UseHttpsRedirection()
 
         app.UseAuthorization()
