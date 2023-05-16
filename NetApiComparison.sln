@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharp.Minimal.Api", "Cshar
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fsharp.Controller.Api", "Fsharp.Controller.Api\Fsharp.Controller.Api.fsproj", "{27F1AA38-8D58-49E5-9DCD-A5236CDC9A26}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fsharp.Minimal.Api", "Fsharp.Minimal.Api\Fsharp.Minimal.Api.fsproj", "{C0BD993D-5F55-4CFE-99AC-EFA4E206E3CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{27F1AA38-8D58-49E5-9DCD-A5236CDC9A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27F1AA38-8D58-49E5-9DCD-A5236CDC9A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27F1AA38-8D58-49E5-9DCD-A5236CDC9A26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0BD993D-5F55-4CFE-99AC-EFA4E206E3CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0BD993D-5F55-4CFE-99AC-EFA4E206E3CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0BD993D-5F55-4CFE-99AC-EFA4E206E3CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0BD993D-5F55-4CFE-99AC-EFA4E206E3CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
