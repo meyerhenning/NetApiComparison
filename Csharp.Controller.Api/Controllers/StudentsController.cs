@@ -9,7 +9,7 @@ namespace Csharp.Controller.Api.Controllers;
 /// Defines the controller for managing students.
 /// </summary>
 [ApiController]
-[Route(StudentsRoutes.Base)]
+[Route(StudentRoutes.Base)]
 public class StudentsController
     : ControllerBase
 {
@@ -28,7 +28,7 @@ public class StudentsController
     /// Adds a new student entity.
     /// </summary>
     /// <param name="newStudent">The student to add.</param>
-    [HttpPost(StudentsRoutes.Add)]
+    [HttpPost(StudentRoutes.Add)]
     public async Task<ActionResult<Student>> Add(
         [FromBody] Student newStudent)
     {
@@ -46,7 +46,7 @@ public class StudentsController
     /// </summary>
     /// <param name="id">The id of the student entity.</param>
     /// <returns></returns>
-    [HttpDelete(StudentsRoutes.Delete)]
+    [HttpDelete(StudentRoutes.Delete)]
     public async Task<ActionResult<Student>> Delete(
         [FromRoute] Guid id)
     {
@@ -68,7 +68,7 @@ public class StudentsController
     /// Gets a student entity.
     /// </summary>
     /// <param name="id">The id of the student entity.</param>
-    [HttpGet(StudentsRoutes.Get)]
+    [HttpGet(StudentRoutes.Get)]
     public async Task<ActionResult> Get(
         [FromRoute] Guid id)
     {
@@ -83,7 +83,7 @@ public class StudentsController
     /// <summary>
     /// Gets all student entities.
     /// </summary>
-    [HttpGet(StudentsRoutes.GetAll)]
+    [HttpGet(StudentRoutes.GetAll)]
     public async Task<ActionResult> GetAll()
     {
         var students = 
@@ -99,7 +99,7 @@ public class StudentsController
     /// <param name="id">The id of the student entity.</param>
     /// <param name="updatedStudent">The student object with updated properties.</param>
     /// <returns></returns>
-    [HttpPut(StudentsRoutes.Update)]
+    [HttpPut(StudentRoutes.Update)]
     public async Task<ActionResult> Update(
         [FromRoute] Guid id,
         [FromBody] Student updatedStudent)

@@ -3,9 +3,9 @@ using Csharp.Controller.Api.Controllers;
 namespace Csharp.Controller.Api.Routes;
 
 /// <summary>
-/// Defines the routes to the students endpoints.
+/// Defines the routes to the student endpoints.
 /// </summary>
-internal static class StudentsRoutes
+internal static class StudentRoutes
 {
     /// <summary>
     /// The route to <see cref="StudentsController.Add"/>.
