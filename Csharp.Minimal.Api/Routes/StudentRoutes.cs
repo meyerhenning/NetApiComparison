@@ -1,9 +1,9 @@
 namespace Csharp.Minimal.Api.Routes;
 
 /// <summary>
-/// Defines the routes to the students endpoints.
+/// Defines the routes to the student endpoints.
 /// </summary>
-internal static class StudentsRoutes
+internal static class StudentRoutes
 {
     /// <summary>
     /// The route to the endpoint with the action:
@@ -12,7 +12,7 @@ internal static class StudentsRoutes
     public const string Add = Base;
     
     /// <summary>
-    /// The base route of all students endpoints.
+    /// The base route of all student endpoints.
     /// </summary>
     private const string Base = "/Students";
     

@@ -6,18 +6,18 @@ using Microsoft.EntityFrameworkCore;
 namespace Csharp.Minimal.Api.EndpointProviders;
 
 /// <summary>
-/// Represents the provider of all students endpoints.
+/// Represents the provider of all student endpoints.
 /// </summary>
 public static class StudentsEndpointProvider
 {
     /// <summary>
-    /// Registers all students endpoints.
+    /// Registers all student endpoints.
     /// </summary>
     /// <param name="app">The web application.</param>
     public static void RegisterEndpoints(WebApplication app)
     {
         // Adds a student
-        app.MapPost(StudentsRoutes.Add,
+        app.MapPost(StudentRoutes.Add,
             async (ApiContext context, [FromBody] Student newStudent) =>
             {
                 context.Students.Add(newStudent);
@@ -29,7 +29,7 @@ public static class StudentsEndpointProvider
             });
 
         // Deletes a student
-        app.MapDelete(StudentsRoutes.Delete,
+        app.MapDelete(StudentRoutes.Delete,
             async (ApiContext context, [FromRoute] Guid id) =>
             {
                 var student =
@@ -47,7 +47,7 @@ public static class StudentsEndpointProvider
             });
         
         // Gets a single student by id
-        app.MapGet(StudentsRoutes.Get,
+        app.MapGet(StudentRoutes.Get,
             async (ApiContext context, [FromRoute] Guid id) =>
             {
                 var student =
@@ -59,12 +59,12 @@ public static class StudentsEndpointProvider
             });
 
         // Gets all students
-        app.MapGet(StudentsRoutes.GetAll,
+        app.MapGet(StudentRoutes.GetAll,
             async (ApiContext context) 
                 => await context.Students.ToListAsync());
 
         // Updates a student
-        app.MapPut(StudentsRoutes.Update,
+        app.MapPut(StudentRoutes.Update,
             async (ApiContext context, [FromRoute] Guid id, [FromBody] Student updatedStudent) =>
             {
                 var student =
