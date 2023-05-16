@@ -83,12 +83,21 @@ type StudentsController(context: ApiContext) =
             if id <> updatedStudent.Id then
                 return x.BadRequest()
             else
-                context.Entry(updatedStudent).State <-
-                    EntityState.Modified
                 
-                context.SaveChangesAsync()
-                |> Async.AwaitTask
-                |> ignore
+                let! student =
+                    context.Students.FindAsync(id)
+                        .AsTask()
+                        |> Async.AwaitTask
                 
-                return x.Ok()
+                if obj.ReferenceEquals(student, null) then
+                    return x.NotFound()
+                else
+                    context.Entry(updatedStudent).State <-
+                        EntityState.Modified
+                    
+                    context.SaveChangesAsync()
+                    |> Async.AwaitTask
+                    |> ignore
+                    
+                    return x.Ok()
         }
