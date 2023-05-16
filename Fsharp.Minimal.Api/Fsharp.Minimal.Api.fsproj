@@ -5,6 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="Models\Student.fs" />
+        <Compile Include="ApiContext.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
