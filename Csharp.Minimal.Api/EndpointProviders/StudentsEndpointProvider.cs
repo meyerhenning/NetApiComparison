@@ -67,6 +67,11 @@ public static class StudentsEndpointProvider
         app.MapPut(StudentRoutes.Update,
             async (ApiContext context, [FromRoute] Guid id, [FromBody] Student updatedStudent) =>
             {
+                if (id != updatedStudent.Id)
+                {
+                    return Results.BadRequest();
+                }
+                
                 var student =
                     await context.Students.FindAsync(id);
 
@@ -75,8 +80,8 @@ public static class StudentsEndpointProvider
                     return Results.NotFound();
                 }
 
-                student.FirstName = updatedStudent.FirstName;
-                student.LastName = updatedStudent.LastName;
+                context.Entry(updatedStudent).State =
+                    EntityState.Modified;
 
                 await context.SaveChangesAsync();
                 return Results.Ok();
