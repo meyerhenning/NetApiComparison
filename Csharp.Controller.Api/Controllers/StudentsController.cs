@@ -104,6 +104,11 @@ public class StudentsController
         [FromRoute] Guid id,
         [FromBody] Student updatedStudent)
     {
+        if (id != updatedStudent.Id)
+        {
+            return BadRequest();
+        }
+        
         var student =
             await _context.Students.FindAsync(id);
 
@@ -112,8 +117,8 @@ public class StudentsController
             return NotFound();
         }
 
-        student.FirstName = updatedStudent.FirstName;
-        student.LastName = updatedStudent.LastName;
+        _context.Entry(updatedStudent).State =
+            EntityState.Modified;
 
         await _context.SaveChangesAsync();
         return Ok();
