@@ -3,15 +3,17 @@ namespace Fsharp.Controller.Api.Controllers
 open System
 open Fsharp.Controller.Api
 open Fsharp.Controller.Api.Models
+open Fsharp.Controller.Api.Routes
 open Microsoft.AspNetCore.Mvc
 open Microsoft.EntityFrameworkCore
 
 [<ApiController>]
-[<Route("[controller]")>]
+[<Route(StudentRoutes.Base)>]
 type StudentsController(context: ApiContext) =
     inherit ControllerBase()
     
     [<HttpPost>]
+    [<Route(StudentRoutes.Add)>]
     member x.Add(
         [<FromBody>] newStudent: Student) : Async<IActionResult> =
         async {
@@ -28,7 +30,7 @@ type StudentsController(context: ApiContext) =
                 newStudent)
         }
     
-    [<HttpDelete("{id:guid}")>]
+    [<HttpDelete(StudentRoutes.Delete)>]
     member x.Delete(
         [<FromRoute>] id: Guid) : Async<IActionResult> =
         async {
@@ -50,7 +52,7 @@ type StudentsController(context: ApiContext) =
                 return x.Ok()
         }
         
-    [<HttpGet("{id:guid}")>]
+    [<HttpGet(StudentRoutes.Get)>]
     member x.Get(
         [<FromRoute>] id: Guid) : Async<IActionResult> =
         async {
@@ -65,7 +67,7 @@ type StudentsController(context: ApiContext) =
                 return x.Ok(student)
         }
         
-    [<HttpGet>]
+    [<HttpGet(StudentRoutes.GetAll)>]
     member x.GetAll() : Async<IActionResult> =
         async {
             let! students =
@@ -75,7 +77,7 @@ type StudentsController(context: ApiContext) =
             return x.Ok(students)
         }
     
-    [<HttpPut("{id:guid}")>]
+    [<HttpPut(StudentRoutes.Update)>]
     member x.Update(
         [<FromRoute>] id: Guid,
         [<FromBody>] updatedStudent: Student) : Async<IActionResult> =
