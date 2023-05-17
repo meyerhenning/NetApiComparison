@@ -14,7 +14,7 @@ internal static class StudentRoutes
     /// <summary>
     /// The base route of all student endpoints.
     /// </summary>
-    private const string Base = "/Students";
+    private const string Base = "/api/Students";
     
     /// <summary>
     /// The route to the endpoint with the action:
