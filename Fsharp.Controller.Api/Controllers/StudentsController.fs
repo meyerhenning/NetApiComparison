@@ -13,7 +13,7 @@ type StudentsController(context: ApiContext) =
     
     [<HttpPost>]
     member x.Add(
-        [<FromBody>] newStudent: Student) : Async<ActionResult> =
+        [<FromBody>] newStudent: Student) : Async<IActionResult> =
         async {
             context.Students.Add(newStudent)
             |> ignore
@@ -30,7 +30,7 @@ type StudentsController(context: ApiContext) =
     
     [<HttpDelete("{id:guid}")>]
     member x.Delete(
-        [<FromRoute>] id: Guid) : Async<ActionResult> =
+        [<FromRoute>] id: Guid) : Async<IActionResult> =
         async {
             let! student =
                 context.Students.FindAsync(id)
@@ -52,7 +52,7 @@ type StudentsController(context: ApiContext) =
         
     [<HttpGet("{id:guid}")>]
     member x.Get(
-        [<FromRoute>] id: Guid) : Async<ActionResult> =
+        [<FromRoute>] id: Guid) : Async<IActionResult> =
         async {
             let! student =
                 context.Students.FindAsync(id)
@@ -66,7 +66,7 @@ type StudentsController(context: ApiContext) =
         }
         
     [<HttpGet>]
-    member x.GetAll() : Async<ActionResult> =
+    member x.GetAll() : Async<IActionResult> =
         async {
             let! students =
                 context.Students.ToListAsync()
@@ -78,7 +78,7 @@ type StudentsController(context: ApiContext) =
     [<HttpPut("{id:guid}")>]
     member x.Update(
         [<FromRoute>] id: Guid,
-        [<FromBody>] updatedStudent: Student) : Async<ActionResult> =
+        [<FromBody>] updatedStudent: Student) : Async<IActionResult> =
         async{
             if id <> updatedStudent.Id then
                 return x.BadRequest()
