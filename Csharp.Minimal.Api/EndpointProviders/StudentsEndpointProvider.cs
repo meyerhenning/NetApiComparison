@@ -24,7 +24,10 @@ public static class StudentsEndpointProvider
                 await context.SaveChangesAsync();
                 
                 return Results.Created(
-                    $"/Students/{newStudent.Id}",
+                    StudentRoutes.Get
+                        .Replace(
+                            "{id:guid}",
+                            newStudent.Id.ToString("D")),
                     newStudent);
             });
 
