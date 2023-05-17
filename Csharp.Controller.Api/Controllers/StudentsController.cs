@@ -29,7 +29,7 @@ public class StudentsController
     /// </summary>
     /// <param name="newStudent">The student to add.</param>
     [HttpPost(StudentRoutes.Add)]
-    public async Task<ActionResult<Student>> Add(
+    public async Task<IActionResult> Add(
         [FromBody] Student newStudent)
     {
         _context.Students.Add(newStudent);
@@ -47,7 +47,7 @@ public class StudentsController
     /// <param name="id">The id of the student entity.</param>
     /// <returns></returns>
     [HttpDelete(StudentRoutes.Delete)]
-    public async Task<ActionResult<Student>> Delete(
+    public async Task<IActionResult> Delete(
         [FromRoute] Guid id)
     {
         var student =
@@ -69,7 +69,7 @@ public class StudentsController
     /// </summary>
     /// <param name="id">The id of the student entity.</param>
     [HttpGet(StudentRoutes.Get)]
-    public async Task<ActionResult> Get(
+    public async Task<IActionResult> Get(
         [FromRoute] Guid id)
     {
         var student = 
@@ -84,7 +84,7 @@ public class StudentsController
     /// Gets all student entities.
     /// </summary>
     [HttpGet(StudentRoutes.GetAll)]
-    public async Task<ActionResult> GetAll()
+    public async Task<IActionResult> GetAll()
     {
         var students = 
             await _context.Students
@@ -100,7 +100,7 @@ public class StudentsController
     /// <param name="updatedStudent">The student object with updated properties.</param>
     /// <returns></returns>
     [HttpPut(StudentRoutes.Update)]
-    public async Task<ActionResult> Update(
+    public async Task<IActionResult> Update(
         [FromRoute] Guid id,
         [FromBody] Student updatedStudent)
     {
