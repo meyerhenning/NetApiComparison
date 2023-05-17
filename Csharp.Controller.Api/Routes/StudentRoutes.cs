@@ -16,7 +16,7 @@ internal static class StudentRoutes
     /// The base route to access the endpoints
     /// of the <see cref="StudentsController"/>.
     /// </summary>
-    public const string Base = "/Students";
+    public const string Base = "/api/Students";
     
     /// <summary>
     /// The route to <see cref="StudentsController.Delete"/>. 
