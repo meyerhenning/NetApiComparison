@@ -1,0 +1,23 @@
+namespace Fsharp.Minimal.Api.Routes
+
+[<RequireQualifiedAccess>]
+module StudentRoutes =
+
+    [<Literal>]
+    let Base = "/api/Students"
+    
+    [<Literal>]
+    let Add = Base
+    
+    [<Literal>]
+    let Get = Base + "/{id:guid}"
+    
+    [<Literal>]
+    let GetAll = Base
+    
+    [<Literal>]
+    let Delete = Base
+    
+    [<Literal>]
+    let Update = Get
+
