@@ -117,8 +117,8 @@ module StudentsEndpointProvider =
                         if obj.ReferenceEquals(student, null) then
                             return Results.NotFound()
                         else
-                            context.Entry(updatedStudent).State <-
-                                EntityState.Modified
+                            context.Students.Entry(student)
+                                .CurrentValues.SetValues(updatedStudent)
                             
                             context.SaveChangesAsync()
                             |> Async.AwaitTask
