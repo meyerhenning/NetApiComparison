@@ -10,6 +10,8 @@ namespace Csharp.Minimal.Api.EndpointProviders;
 /// </summary>
 public static class StudentsEndpointProvider
 {
+    private const string EndpointBaseTag = "Students";
+    
     /// <summary>
     /// Registers all student endpoints.
     /// </summary>
@@ -29,7 +31,8 @@ public static class StudentsEndpointProvider
                             "{id:guid}",
                             newStudent.Id.ToString("D")),
                     newStudent);
-            });
+            })
+            .WithTags(EndpointBaseTag);
 
         // Deletes a student
         app.MapDelete(StudentRoutes.Delete,
@@ -47,7 +50,8 @@ public static class StudentsEndpointProvider
                 await context.SaveChangesAsync();
 
                 return Results.Ok();
-            });
+            })
+            .WithTags(EndpointBaseTag);
         
         // Gets a single student by id
         app.MapGet(StudentRoutes.Get,
@@ -59,12 +63,14 @@ public static class StudentsEndpointProvider
                 return student is null
                     ? Results.NotFound()
                     : Results.Ok(student);
-            });
+            })
+            .WithTags(EndpointBaseTag);
 
         // Gets all students
         app.MapGet(StudentRoutes.GetAll,
             async (ApiContext context) 
-                => await context.Students.ToListAsync());
+                => await context.Students.ToListAsync())
+            .WithTags(EndpointBaseTag);
 
         // Updates a student
         app.MapPut(StudentRoutes.Update,
@@ -88,6 +94,7 @@ public static class StudentsEndpointProvider
 
                 await context.SaveChangesAsync();
                 return Results.Ok();
-            });
+            })
+            .WithTags(EndpointBaseTag);
     }
 }
