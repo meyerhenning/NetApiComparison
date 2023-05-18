@@ -94,8 +94,8 @@ type StudentsController(context: ApiContext) =
                 if obj.ReferenceEquals(student, null) then
                     return x.NotFound()
                 else
-                    context.Entry(updatedStudent).State <-
-                        EntityState.Modified
+                    context.Students.Entry(student)
+                        .CurrentValues.SetValues(updatedStudent)
                     
                     context.SaveChangesAsync()
                     |> Async.AwaitTask
