@@ -117,8 +117,8 @@ public class StudentsController
             return NotFound();
         }
 
-        _context.Entry(updatedStudent).State =
-            EntityState.Modified;
+        _context.Students.Entry(student)
+            .CurrentValues.SetValues(updatedStudent);
 
         await _context.SaveChangesAsync();
         return Ok();
