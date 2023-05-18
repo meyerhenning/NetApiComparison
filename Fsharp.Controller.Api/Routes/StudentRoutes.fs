@@ -16,7 +16,7 @@ module StudentRoutes =
     let GetAll = Base
     
     [<Literal>]
-    let Delete = Base
+    let Delete = Get
     
     [<Literal>]
     let Update = Get
