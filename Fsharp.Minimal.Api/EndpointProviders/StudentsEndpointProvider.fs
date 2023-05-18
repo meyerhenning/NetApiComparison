@@ -9,12 +9,19 @@ open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Http
 open Microsoft.EntityFrameworkCore
 
+/// <summary>
+/// Represents the provider of all student endpoints.
+/// </summary>
 [<RequireQualifiedAccess>]
 module StudentsEndpointProvider =
     
     [<Literal>]
     let private EndpointBaseTag = "Students"
     
+    /// <summary>
+    /// Registers all student endpoints.
+    /// </summary>
+    /// <param name="app">The web application.</param>
     let registerEndpoints (app: WebApplication) =
         
         // Adds a student
