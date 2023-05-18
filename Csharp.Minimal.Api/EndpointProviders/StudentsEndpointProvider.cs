@@ -89,8 +89,8 @@ public static class StudentsEndpointProvider
                     return Results.NotFound();
                 }
 
-                context.Entry(updatedStudent).State =
-                    EntityState.Modified;
+                context.Students.Entry(student)
+                    .CurrentValues.SetValues(updatedStudent);
 
                 await context.SaveChangesAsync();
                 return Results.Ok();
