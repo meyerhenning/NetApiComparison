@@ -1,5 +1,6 @@
 #nowarn "20"
 
+open System.Reflection
 open Fsharp.Minimal.Api
 open Fsharp.Minimal.Api.EndpointProviders
 open Microsoft.AspNetCore.Builder
@@ -18,7 +19,12 @@ let main args =
                 |> ignore)
 
     builder.Services.AddEndpointsApiExplorer()
-    builder.Services.AddSwaggerGen()
+    builder.Services.AddSwaggerGen(
+        fun o ->
+            o.IncludeXmlComments(
+                Assembly.GetExecutingAssembly()
+                    .Location
+                    .Replace(".dll", ".xml")))
 
     let app = builder.Build()
     
