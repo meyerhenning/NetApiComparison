@@ -1,3 +1,4 @@
+using System.Reflection;
 using Csharp.Minimal.Api;
 using Csharp.Minimal.Api.EndpointProviders;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,12 @@ builder.Services.AddDbContext<ApiContext>(
         o.UseInMemoryDatabase("ApiDb"));
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(
+    o =>
+        o.IncludeXmlComments(
+            Assembly.GetExecutingAssembly()
+                .Location
+                .Replace(".dll", ".xml")));
 
 var app = builder.Build();
 
