@@ -1,6 +1,7 @@
 namespace Fsharp.Controller.Api
 #nowarn "20"
 
+open System.Reflection
 open Microsoft.AspNetCore.Builder
 open Microsoft.EntityFrameworkCore
 open Microsoft.Extensions.DependencyInjection
@@ -19,7 +20,11 @@ module Program =
                     |> ignore)
 
         builder.Services.AddControllers()
-        builder.Services.AddSwaggerGen()
+        builder.Services.AddSwaggerGen(
+            fun o -> o.IncludeXmlComments(
+                Assembly.GetExecutingAssembly()
+                    .Location
+                    .Replace(".dll", ".xml")))
 
         let app = builder.Build()
 
