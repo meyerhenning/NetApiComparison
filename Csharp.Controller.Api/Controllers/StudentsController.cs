@@ -25,7 +25,7 @@ public class StudentsController
     }
 
     /// <summary>
-    /// Adds a new student entity.
+    /// Adds a new student.
     /// </summary>
     /// <param name="newStudent">The student to add.</param>
     [HttpPost(StudentRoutes.Add)]
@@ -42,7 +42,7 @@ public class StudentsController
     }
 
     /// <summary>
-    /// Deletes a student entity.
+    /// Deletes a student.
     /// </summary>
     /// <param name="id">The id of the student entity.</param>
     /// <returns></returns>
@@ -65,7 +65,7 @@ public class StudentsController
     }
     
     /// <summary>
-    /// Gets a student entity.
+    /// Gets a student.
     /// </summary>
     /// <param name="id">The id of the student entity.</param>
     [HttpGet(StudentRoutes.Get)]
@@ -81,7 +81,7 @@ public class StudentsController
     }
 
     /// <summary>
-    /// Gets all student entities.
+    /// Gets all students.
     /// </summary>
     [HttpGet(StudentRoutes.GetAll)]
     public async Task<IActionResult> GetAll()
@@ -94,7 +94,7 @@ public class StudentsController
     }
 
     /// <summary>
-    /// Changes properties on a student entity.
+    /// Changes the properties of a student.
     /// </summary>
     /// <param name="id">The id of the student entity.</param>
     /// <param name="updatedStudent">The student object with updated properties.</param>
