@@ -19,6 +19,7 @@ type StudentsController(context: ApiContext) =
     /// <param name="newStudent">The student to add.</param>
     [<HttpPost>]
     [<Route(StudentRoutes.Add)>]
+    [<ProducesResponseType(typedefof<Student>, StatusCodes.Status201Created)>]
     member x.Add(
         [<FromBody>] newStudent: Student) : Async<IActionResult> =
         async {
@@ -40,6 +41,8 @@ type StudentsController(context: ApiContext) =
     /// </summary>
     /// <param name="id">The id of the student.</param>
     [<HttpDelete(StudentRoutes.Delete)>]
+    [<ProducesResponseType(StatusCodes.Status200OK)>]
+    [<ProducesResponseType(StatusCodes.Status404NotFound)>]
     member x.Delete(
         [<FromRoute>] id: Guid) : Async<IActionResult> =
         async {
@@ -66,6 +69,8 @@ type StudentsController(context: ApiContext) =
     /// </summary>
     /// <param name="id">The id of the student.</param>
     [<HttpGet(StudentRoutes.Get)>]
+    [<ProducesResponseType(typedefof<Student>, StatusCodes.Status200OK)>]
+    [<ProducesResponseType(StatusCodes.Status404NotFound)>]
     member x.Get(
         [<FromRoute>] id: Guid) : Async<IActionResult> =
         async {
@@ -84,6 +89,7 @@ type StudentsController(context: ApiContext) =
     /// Gets all students.
     /// </summary>
     [<HttpGet(StudentRoutes.GetAll)>]
+    [<ProducesResponseType(typedefof<List<Student>>, StatusCodes.Status200OK)>]
     member x.GetAll() : Async<IActionResult> =
         async {
             let! students =
@@ -99,6 +105,9 @@ type StudentsController(context: ApiContext) =
     /// <param name="id">The id of the student.</param>
     /// <param name="updatedStudent">The updated student object.</param>
     [<HttpPut(StudentRoutes.Update)>]
+    [<ProducesResponseType(StatusCodes.Status200OK)>]
+    [<ProducesResponseType(StatusCodes.Status400BadRequest)>]
+    [<ProducesResponseType(StatusCodes.Status404NotFound)>]
     member x.Update(
         [<FromRoute>] id: Guid,
         [<FromBody>] updatedStudent: Student) : Async<IActionResult> =
