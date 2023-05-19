@@ -1,6 +1,7 @@
 namespace Fsharp.Minimal.Api.EndpointProviders
 
 open System
+open System.Net.Mime
 open System.Threading.Tasks
 open Fsharp.Minimal.Api
 open Fsharp.Minimal.Api.Models
@@ -44,6 +45,9 @@ module StudentsEndpointProvider =
                                 newStudent.Id.ToString("D")),
                         newStudent)
                 }))
+                .Produces<Student>(
+                    StatusCodes.Status201Created,
+                    MediaTypeNames.Application.Json)
                 .WithTags(EndpointBaseTag)
                 |> ignore
         
@@ -70,6 +74,12 @@ module StudentsEndpointProvider =
                         
                         return Results.Ok()
                 }))
+                .Produces(
+                    StatusCodes.Status200OK,
+                    MediaTypeNames.Application.Json)
+                .Produces(
+                    StatusCodes.Status404NotFound,
+                    MediaTypeNames.Application.Json)
                 .WithTags(EndpointBaseTag)
                 |> ignore
         
@@ -89,6 +99,12 @@ module StudentsEndpointProvider =
                     else
                         return Results.Ok(student)
                 }))
+                .Produces<Student>(
+                    StatusCodes.Status200OK,
+                    MediaTypeNames.Application.Json)
+                .Produces(
+                    StatusCodes.Status404NotFound,
+                    MediaTypeNames.Application.Json)
                 .WithTags(EndpointBaseTag)
                 |> ignore
         
@@ -104,6 +120,9 @@ module StudentsEndpointProvider =
                     
                     return Results.Ok(students)
                 }))
+                .Produces<List<Student>>(
+                    StatusCodes.Status200OK,
+                    MediaTypeNames.Application.Json)
                 .WithTags(EndpointBaseTag)
                 |> ignore
         
@@ -133,5 +152,14 @@ module StudentsEndpointProvider =
                             
                             return Results.Ok()
                 }))
+                .Produces(
+                    StatusCodes.Status200OK,
+                    MediaTypeNames.Application.Json)
+                .Produces(
+                    StatusCodes.Status400BadRequest,
+                    MediaTypeNames.Application.Json)
+                .Produces(
+                    StatusCodes.Status404NotFound,
+                    MediaTypeNames.Application.Json)
                 .WithTags(EndpointBaseTag)
                 |> ignore
