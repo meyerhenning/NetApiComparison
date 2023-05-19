@@ -29,6 +29,7 @@ public class StudentsController
     /// </summary>
     /// <param name="newStudent">The student to add.</param>
     [HttpPost(StudentRoutes.Add)]
+    [ProducesResponseType(typeof(Student), StatusCodes.Status201Created)]
     public async Task<IActionResult> Add(
         [FromBody] Student newStudent)
     {
@@ -47,6 +48,8 @@ public class StudentsController
     /// <param name="id">The id of the student entity.</param>
     /// <returns></returns>
     [HttpDelete(StudentRoutes.Delete)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(
         [FromRoute] Guid id)
     {
@@ -69,6 +72,8 @@ public class StudentsController
     /// </summary>
     /// <param name="id">The id of the student entity.</param>
     [HttpGet(StudentRoutes.Get)]
+    [ProducesResponseType(typeof(Student), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Get(
         [FromRoute] Guid id)
     {
@@ -84,6 +89,7 @@ public class StudentsController
     /// Gets all students.
     /// </summary>
     [HttpGet(StudentRoutes.GetAll)]
+    [ProducesResponseType(typeof(List<Student>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll()
     {
         var students = 
@@ -100,6 +106,9 @@ public class StudentsController
     /// <param name="updatedStudent">The student object with updated properties.</param>
     /// <returns></returns>
     [HttpPut(StudentRoutes.Update)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Update(
         [FromRoute] Guid id,
         [FromBody] Student updatedStudent)
