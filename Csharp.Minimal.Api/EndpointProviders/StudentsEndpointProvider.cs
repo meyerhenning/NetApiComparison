@@ -32,6 +32,7 @@ public static class StudentsEndpointProvider
                             newStudent.Id.ToString("D")),
                     newStudent);
             })
+            .Produces<Student>(StatusCodes.Status201Created)
             .WithTags(EndpointBaseTag);
 
         // Deletes a student
@@ -51,6 +52,8 @@ public static class StudentsEndpointProvider
 
                 return Results.Ok();
             })
+            .Produces(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status404NotFound)
             .WithTags(EndpointBaseTag);
         
         // Gets a single student by id
@@ -64,12 +67,15 @@ public static class StudentsEndpointProvider
                     ? Results.NotFound()
                     : Results.Ok(student);
             })
+            .Produces<Student>()
+            .Produces(StatusCodes.Status404NotFound)
             .WithTags(EndpointBaseTag);
 
         // Gets all students
         app.MapGet(StudentRoutes.GetAll,
             async (ApiContext context) 
                 => await context.Students.ToListAsync())
+            .Produces<List<Student>>()
             .WithTags(EndpointBaseTag);
 
         // Updates a student
@@ -95,6 +101,9 @@ public static class StudentsEndpointProvider
                 await context.SaveChangesAsync();
                 return Results.Ok();
             })
+            .Produces(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status400BadRequest)
+            .Produces(StatusCodes.Status404NotFound)
             .WithTags(EndpointBaseTag);
     }
 }
