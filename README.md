@@ -10,7 +10,9 @@ The main goal of this repository is to provide examples on how to implement the 
 
 | Endpoint Group | C# Controller | C# Minimal | F# Controller | F# Minimal |
 | :-: | :-: | :-: | :-: | :-: |
-| /Students | ✅ | ✅ | ✅ | ✅ |
+| Students | ✔ | ✔ | ✔ | ✔ |
+| Teachers | ✘ | ✘ | ✘ | ✘ |
+| Universities | ✘ | ✘ | ✘ | ✘ |
 
 ## Remarks
 
