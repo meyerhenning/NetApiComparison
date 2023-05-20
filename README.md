@@ -6,6 +6,12 @@ NetApiComparison is a collection of controller-based and minimal APIs written in
 
 The main goal of this repository is to provide examples on how to implement the same data and project structure using different API types. Because of that same structure it should also be helpful in breaking language barriers between C# and F#.
 
+## Endpoints
+
+| Endpoint Group | C# Controller | C# Minimal | F# Controller | F# Minimal |
+| :-: | :-: | :-: | :-: | :-: |
+| /Students | ✅ | ✅ | ✅ | ✅ |
+
 ## Remarks
 
 ### Task and Async
