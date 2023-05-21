@@ -7,7 +7,7 @@ namespace Csharp.Minimal.Api.EndpointProviders;
 /// <summary>
 /// Represents the provider of all student endpoints.
 /// </summary>
-public static class StudentsEndpointProvider
+internal static class StudentsEndpointProvider
 {
     private const string EndpointBaseTag = "Students";
     
