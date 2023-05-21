@@ -8,7 +8,7 @@ namespace Csharp.Minimal.Api.EndpointHandlers;
 /// <summary>
 /// Defines all teacher endpoint handlers.
 /// </summary>
-public static class TeacherEndpointHandlers
+internal static class TeacherEndpointHandlers
 {
     /// <summary>
     /// Adds a teacher.
