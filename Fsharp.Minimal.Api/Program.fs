@@ -7,6 +7,7 @@ open Microsoft.AspNetCore.Builder
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.EntityFrameworkCore
 open Microsoft.Extensions.Hosting
+open Microsoft.OpenApi.Models
 
 let exitCode = 0
 
@@ -21,10 +22,18 @@ let main args =
     builder.Services.AddEndpointsApiExplorer()
     builder.Services.AddSwaggerGen(
         fun o ->
+            o.SwaggerDoc("v1", OpenApiInfo(
+                Version = "v1",
+                Title = "University API",
+                Description =
+                    "An API for managing universities and related resources. <br> \n\
+                    Type: <b>F# Minimal</b>"))
+            
             o.IncludeXmlComments(
                 Assembly.GetExecutingAssembly()
                     .Location
                     .Replace(".dll", ".xml")))
+
 
     let app = builder.Build()
     

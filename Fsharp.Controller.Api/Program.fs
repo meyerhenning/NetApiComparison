@@ -6,6 +6,7 @@ open Microsoft.AspNetCore.Builder
 open Microsoft.EntityFrameworkCore
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
+open Microsoft.OpenApi.Models
 
 module Program =
     let exitCode = 0
@@ -21,10 +22,18 @@ module Program =
 
         builder.Services.AddControllers()
         builder.Services.AddSwaggerGen(
-            fun o -> o.IncludeXmlComments(
-                Assembly.GetExecutingAssembly()
-                    .Location
-                    .Replace(".dll", ".xml")))
+            fun o ->
+                o.SwaggerDoc("v1", OpenApiInfo(
+                    Version = "v1",
+                    Title = "University API",
+                    Description =
+                        "An API for managing universities and related resources. <br> \n\
+                        Type: <b>F# Controller</b>"))
+                
+                o.IncludeXmlComments(
+                    Assembly.GetExecutingAssembly()
+                        .Location
+                        .Replace(".dll", ".xml")))
 
         let app = builder.Build()
 
