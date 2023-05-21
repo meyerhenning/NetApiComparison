@@ -20,4 +20,9 @@ public class ApiContext
     /// Gets or sets the <see cref="DbSet{TEntity}"/> managing students.
     /// </summary>
     public DbSet<Student> Students { get; set; }
+    
+    /// <summary>
+    /// Gets or sets the <see cref="DbSet{TEntity}"/> managing teachers.
+    /// </summary>
+    public DbSet<Teacher> Teachers { get; set; }
 }
