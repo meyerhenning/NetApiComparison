@@ -26,5 +26,6 @@ if (app.Environment.IsDevelopment())
 }
 
 StudentsEndpointProvider.RegisterEndpoints(app);
+TeachersEndpointProvider.RegisterEndpoints(app);
 
 app.Run();
