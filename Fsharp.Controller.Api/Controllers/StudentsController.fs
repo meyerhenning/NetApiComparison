@@ -8,6 +8,9 @@ open Microsoft.AspNetCore.Http
 open Microsoft.AspNetCore.Mvc
 open Microsoft.EntityFrameworkCore
 
+/// <summary>
+/// Defines the controller for managing students.
+/// </summary>
 [<ApiController>]
 [<Route(StudentRoutes.Base)>]
 type StudentsController(context: ApiContext) =
