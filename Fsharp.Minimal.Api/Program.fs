@@ -43,6 +43,7 @@ let main args =
         |> ignore
     
     StudentsEndpointProvider.registerEndpoints(app)
+    TeachersEndpointProvider.registerEndpoints(app)
     
     app.Run()
 

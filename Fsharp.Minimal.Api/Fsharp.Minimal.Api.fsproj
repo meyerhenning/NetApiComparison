@@ -10,10 +10,14 @@
 
     <ItemGroup>
         <Compile Include="Models\Student.fs" />
+        <Compile Include="Models\Teacher.fs" />
         <Compile Include="ApiContext.fs" />
         <Compile Include="Routes\StudentRoutes.fs" />
+        <Compile Include="Routes\TeacherRoutes.fs" />
         <Compile Include="EndpointHandlers\StudentEndpointHandlers.fs" />
+        <Compile Include="EndpointHandlers\TeacherEndpointHandlers.fs" />
         <Compile Include="EndpointProviders\StudentsEndpointProvider.fs" />
+        <Compile Include="EndpointProviders\TeachersEndpointProvider.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
